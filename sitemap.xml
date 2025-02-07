@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/000_test_post/index.html</loc>
-    <lastmod>2025-02-05T20:43:35.486Z</lastmod>
+    <lastmod>2025-02-07T00:36:41.835Z</lastmod>
   </url>
   <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
-    <lastmod>2025-02-05T20:43:35.485Z</lastmod>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/robocall/robocall.html</loc>
+    <lastmod>2025-02-07T00:36:41.839Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
-    <lastmod>2025-02-05T20:43:35.485Z</lastmod>
+    <lastmod>2025-02-07T00:36:41.834Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
+    <lastmod>2025-02-07T00:36:41.834Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_my_first_post/test_post.html</loc>
-    <lastmod>2025-02-05T20:43:35.487Z</lastmod>
+    <lastmod>2025-02-07T00:36:41.839Z</lastmod>
   </url>
 </urlset>

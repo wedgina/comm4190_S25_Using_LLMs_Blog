@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Wedgina">
-<meta name="dcterms.date" content="2025-02-04">
-<meta name="description" content="Testing blogging">
+<meta name="author" content="Wedgina Norelus">
+<meta name="dcterms.date" content="2025-02-06">
+<meta name="description" content="Asking Chat GPT to Play Hangman">
 
 <title>Can ChatGPT Logic Like We Do? – My Explorations with LLMs</title>
 <style>
@@ -119,11 +119,13 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Can ChatGPT Logic Like We Do?</h1>
                   <div>
         <div class="description">
-          Testing blogging
+          Asking Chat GPT to Play Hangman
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Prompting</div>
+                <div class="quarto-category">Logic</div>
               </div>
                   </div>
   </div>
@@ -134,14 +136,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Wedgina </p>
+               <p>Wedgina Norelus </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 4, 2025</p>
+        <p class="date">February 6, 2025</p>
       </div>
     </div>
     
@@ -162,7 +164,28 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="can-chatgpt-logic-like-we-do" class="level1">
 <h1>Can ChatGPT Logic Like We Do?</h1>
-<p>some new content</p>
+<p>I asked ChatGPT to play Hangman with me to see if it can guess the word after very obvious priming prior</p>
+<p><img src="img/hangmanss.png" width="600px"></p>
+<p>In class we discussed how Chat GPT models are always playing some type of guessing game where they are trying to predict what we are going to say or do next.</p>
+<p>As a cog sci major, I have taken other courses where I have also learned about language prediction models, where words are each weighted with their own probabilities that represent how often they occur in the language, especially particularly after a previous word</p>
+<p>Recently I was curious in understanding if Chat GPT could really predict our langauge the way humans would predict language but in process that requires greater logic. The process I used is as follows:</p>
+<ol type="1">
+<li>I asked for ChatGPT to generate an 8 letter word that would be used for us to play Hangman.</li>
+</ol>
+<p><img src="img/Givemeword.png" width="600px"></p>
+<ol start="2" type="1">
+<li>I passed the following prompt to invite Chat to play Hangman</li>
+</ol>
+<p><img src="img/Askingtoplaygame.png" width="600px"></p>
+<ol start="3" type="1">
+<li>I continue to play the game until Chat runs out of tries</li>
+<li>Reveal whether it guesses the word correctly or not</li>
+</ol>
+<p>I found that as I kept playing with Chat, it kept guessing for the word despite literally giving me a word before we had played the game. It ultimately never guessed the word properly within the allotted 6 tries.</p>
+<p><img src="img/Tellingitanswer.png" width="600px"></p>
+<p>In fact, even when I tell it the word, it acts and appears as if it never gave me the word in the first place.</p>
+<p>When it comes to humans, if I had asked them to give me a word first and then made them be the ones to guess the word out of a sudden game of hangman, they would immediately suspect that the word they are trying to find is the one they literally just gave me. Even if they don’t immediately guess the word on the first try, I would expect them to guess the correct letters immediately to ensure that the word they’re guessing is the one they gave.</p>
+<p>This is just how our logic is, and an AI model is not able to replicate this kind of common sense.</p>
 
 
 </section>
