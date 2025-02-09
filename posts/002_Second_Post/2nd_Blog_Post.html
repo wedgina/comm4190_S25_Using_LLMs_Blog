@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Wedgina Norelus">
+<meta name="dcterms.date" content="2025-02-08">
+<meta name="description" content="Determining ChatGPT’s familiarity with afrocentric features">
 
-<title>My Explorations with LLMs</title>
+<title>My experience with bias in AI – My Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5027bf1c1f92ac6615724d89c8213d6a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5027bf1c1f92ac6615724d89c8213d6a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +69,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">My Explorations with LLMs</span>
     </a>
   </div>
@@ -149,7 +92,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -172,194 +115,84 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">My Explorations with LLMs</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">My experience with bias in AI</h1>
+                  <div>
+        <div class="description">
+          Determining ChatGPT’s familiarity with afrocentric features
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Prompting</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Wedgina Norelus </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 8, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="QVBJ">API <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExNcw==">LLMs <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TG9naWM=">Logic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvbXB0aW5n">Prompting <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bG9naWM=">logic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvbXB0aW5n">prompting <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="testing-chatgpts-familiarity-with-afrocentric-features" class="level1">
+<h1>Testing ChatGPT’s Familiarity with Afrocentric Features</h1>
+<p><img src="img/Screen Shot 2025-02-07 at 3.25.22 AM.png" width="600px"></p>
+<p>As a person of color who has very textured hair, I found it difficult growing up finding accurate and helpful resources that would help me manage, take care of, and discover useful information regarding my hair type. However, an overwhelming majority of results that appeared represented a way looser hair texture, particularly straight hair. I struggled to easily be able to find people that looked like me in the results.</p>
+<p>Now in 2025, when I try to search up for the same “easy hairstyles to try”, there are actually some results that include Black people and a couple that have my hair texture. Despite some progress, it still took a good amount of time to even get to this point</p>
+<p>Within AI, we know that models are trained to recognize patterns and to predict and complete them. With the issues I have described I was curious as to its experience with recognizing my hair type despite, my hair texture’s history with a lack of representation.</p>
+<p>On the topic of hair, I’ve always been generally curious about what the back of my head looks like. I only usually seeing the front or the side of my head from time to time. So I questioned whether AI could properly determine what it thinks the back of my head looks like considering the hair texture that I have.</p>
+<p>I gave ChatGPT a prompt to determine this question:</p>
+<p><img src="img/Screen Shot 2025-02-08 at 4.50.55 PM.png" width="600px"></p>
+</section>
+<section id="i-gave-it-this-image-to-start" class="level1">
+<h1>I gave it this image to start:</h1>
+<p><img src="img/puffdo.jpg" width="600px"></p>
+<p>The clues I gave it are highlighted in this image:</p>
+<p><img src="img/clues.jpeg" width="600px"></p>
+<p>I wanted to test how chatgpt would produce an image based on minimal clues regarding my hairstyle, to see how it would predict what the back of what my head looked like. This photo shows the top of my hairstyle (so that I could guide Chat in the right direction so it doesn’t assume I’m bald or something) and it shows some hair in near my ear, so that it sees that my hair is textured and not straight.</p>
+</section>
+<section id="results-discussion" class="level1">
+<h1>Results &amp; Discussion</h1>
+<p><img src="img/ponytailFromSide.png" width="600px"> <img src="img/ponytailFromBack.png" width="600px"></p>
+<p>It actually gets the hairstyle I am truly wearing here pretty close despite not having a lot of clues, but it gets my hair texture completely off. It predicts my hair being completely straight when my hair is the complete opposite.</p>
+<p>Since AI is trained to recognize and complete patterns GPT probably determined that the hair on the top of my head is extremely straight which it does appear because of how slick it is. I’ve concluded that it fails to realize a slick back can be done on any hair texture, and it mistakenly ruled out possibility that hairstyle with this characteristic can have a variety of input, not just straight hair.</p>
+</section>
+<section id="second-attempt" class="level1">
+<h1>Second Attempt</h1>
+<p>In this attempt I tried a new image with hair that was more detactable. And this was the result:</p>
+<p><img src="img/IMG_0001.png" width="600px"> <img src="img/halfuphalfdownChatGPT.png" width="600px"></p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TExNcyUyQ1Byb21wdGluZw==" data-listing-date-sort="1738972800000" data-listing-file-modified-sort="1739069451358" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="486">
-<div class="thumbnail">
-<p><a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external"></a></p><a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external">
-<p class="card-img-top"><img src="posts/002_Second_Post/img/Screen Shot 2025-02-07 at 3.25.22 AM.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external">My experience with bias in AI</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">
-LLMs
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvbXB0aW5n'); return false;">
-Prompting
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external">Determining ChatGPT’s familiarity with afrocentric features</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/002_Second_Post/2nd_Blog_Post.html" class="no-external">
-<div class="listing-date">
-Feb 8, 2025
-</div>
-<div class="listing-author">
-Wedgina Norelus
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="TExNcyUyQ1Byb21wdGluZyUyQ0xvZ2lj" data-listing-date-sort="1738800000000" data-listing-file-modified-sort="1739069451357" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="361">
-<div class="thumbnail">
-<p><a href="./posts/001_my_first_post/test_post.html" class="no-external"></a></p><a href="./posts/001_my_first_post/test_post.html" class="no-external">
-<p class="card-img-top"><img src="posts/001_my_first_post/img/hangmanss.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/001_my_first_post/test_post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/001_my_first_post/test_post.html" class="no-external">Can ChatGPT Logic Like We Do?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/001_my_first_post/test_post.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">
-LLMs
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvbXB0aW5n'); return false;">
-Prompting
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('TG9naWM='); return false;">
-Logic
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/001_my_first_post/test_post.html" class="no-external">Asking Chat GPT to Play Hangman</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/001_my_first_post/test_post.html" class="no-external">
-<div class="listing-date">
-Feb 6, 2025
-</div>
-<div class="listing-author">
-Wedgina Norelus
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="TExNcyUyQ0FQSQ==" data-listing-date-sort="1738627200000" data-listing-file-modified-sort="1739069451388" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/robocall/robocall.html" class="no-external"></a></p><a href="./posts/robocall/robocall.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/robocall/robocall.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/robocall/robocall.html" class="no-external">AI robocalls</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/robocall/robocall.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">
-LLMs
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QVBJ'); return false;">
-API
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/robocall/robocall.html" class="no-external">Testing blogging</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/robocall/robocall.html" class="no-external">
-<div class="listing-date">
-Feb 4, 2025
-</div>
-<div class="listing-author">
-Wedgina
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="TExNcyUyQ3Byb21wdGluZyUyQ2xvZ2lj" data-listing-date-sort="1706832000000" data-listing-file-modified-sort="1739069451353" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="450">
-<div class="thumbnail">
-<p><a href="./posts/000_test_post/index.html" class="no-external"></a></p><a href="./posts/000_test_post/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/000_test_post/gpt3-5.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/000_test_post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/000_test_post/index.html" class="no-external">A test post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/000_test_post/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">
-LLMs
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">
-prompting
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('bG9naWM='); return false;">
-logic
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/000_test_post/index.html" class="no-external">An example post from a Jupyter notebook</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/000_test_post/index.html" class="no-external">
-<div class="listing-date">
-Feb 2, 2024
-</div>
-<div class="listing-author">
-An LLM User
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
