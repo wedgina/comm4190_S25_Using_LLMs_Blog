@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Wedgina">
-<meta name="dcterms.date" content="2025-02-04">
-<meta name="description" content="Testing blogging">
+<meta name="author" content="Wedgina Norelus">
+<meta name="dcterms.date" content="2025-02-19">
+<meta name="description" content="Asking AI to create endings to my favorite shows">
 
-<title>AI robocalls – My Explorations with LLMs</title>
+<title>Can AI write better scripts than we can? – My Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -122,16 +156,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI robocalls</h1>
+<h1 class="title">Can AI write better scripts than we can?</h1>
   <div class="quarto-categories">
     <div class="quarto-category">LLMs</div>
-    <div class="quarto-category">API</div>
+    <div class="quarto-category">Creativity</div>
+    <div class="quarto-category">Television</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Testing blogging
+    Asking AI to create endings to my favorite shows
   </div>
 </div>
 
@@ -141,14 +176,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Wedgina </p>
+             <p>Wedgina Norelus </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 4, 2025</p>
+      <p class="date">February 19, 2025</p>
     </div>
   </div>
   
@@ -160,74 +195,119 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="b6c9b4c8-6ae1-43a3-9fca-926507705a21" class="cell" data-execution_count="15">
+<section id="testing-ai-on-its-storytelling" class="level1">
+<h1>Testing AI On Its Storytelling</h1>
+<div id="95347e89-3d79-4b76-86cc-9270c175c301" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.prompts.chat <span class="im">import</span> ChatPromptTemplate</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.runnables <span class="im">import</span> (</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                        RunnablePassthrough,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                        RunnableLambda,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                        RunnableParallel</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_openai.chat_models <span class="im">import</span> ChatOpenAI</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.output_parsers <span class="im">import</span> StrOutputParser</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> itemgetter</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9b118883-074e-4a78-b31c-5ba368ec51ca" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load API key</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> load_dotenv()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="08ec77ba-6075-4155-9eae-7d16a177c409" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot_generation_prompt <span class="op">=</span> ChatPromptTemplate.from_template(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Given the following show, create an effective</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">    ending for how it should end:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">    ---</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">    Show: </span><span class="sc">{Show}</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">    ---</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">    Ending: """</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plot_alternative_ending_prompt <span class="op">=</span> ChatPromptTemplate.from_template(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""Given the following show, create an effective alternative</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">    ending to how the last episode actually ended:</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">    ---</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">    Show: </span><span class="sc">{Show}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">    ---</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">    AlternativeEnding: """</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5499de81-d538-42d6-a20c-8059955b90fc" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the chat model:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ChatOpenAI(model_name<span class="op">=</span><span class="st">"gpt-4"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the sub-chains:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plot_generation_chain <span class="op">=</span> ( plot_generation_prompt</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> model</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> StrOutputParser() )</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plot_alternative_ending_chain <span class="op">=</span> ( plot_alternative_ending_prompt</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> model</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> StrOutputParser() )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0dc5af54-bc75-4e68-be9f-13821c6c58ec" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stranger_things_ending <span class="op">=</span> plot_generation_chain.invoke({<span class="st">'Show'</span>: <span class="st">'Stranger Things'</span>})</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>manifest_alternative <span class="op">=</span> plot_alternative_ending_chain.invoke({<span class="st">'Show'</span>: <span class="st">'Manifest'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="39d0d41c-32bb-4ee2-8239-fa8c11ab5fe2" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cobra_kai_alternative <span class="op">=</span> plot_alternative_ending_chain.invoke({<span class="st">'Show'</span>: <span class="st">'Cobra Kai'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d6184f3a-f24d-4d4b-94d5-87f62e6ffc3d" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stranger_things_ending)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>gpt-4o-mini-audio-preview
-gpt-4o-mini-audio-preview-2024-12-17
-gpt-4o-mini-realtime-preview
-dall-e-2
-gpt-4o-mini-2024-07-18
-gpt-4o-mini
-o1-mini-2024-09-12
-o1-preview-2024-09-12
-o1-mini
-o1-preview
-whisper-1
-dall-e-3
-gpt-4-turbo
-gpt-4o-audio-preview
-gpt-4o-audio-preview-2024-10-01
-babbage-002
-omni-moderation-latest
-omni-moderation-2024-09-26
-tts-1-hd-1106
-gpt-4o-2024-08-06
-o3-mini
-o3-mini-2025-01-31
-gpt-4o
-gpt-4o-2024-05-13
-tts-1-hd
-o1
-o1-2024-12-17
-gpt-4o-2024-11-20
-gpt-4-turbo-2024-04-09
-gpt-4-0613
-chatgpt-4o-latest
-tts-1
-gpt-3.5-turbo-16k
-tts-1-1106
-davinci-002
-gpt-4-turbo-preview
-gpt-4o-mini-realtime-preview-2024-12-17
-gpt-3.5-turbo-1106
-gpt-3.5-turbo-instruct
-gpt-4
-gpt-4o-realtime-preview-2024-10-01
-gpt-3.5-turbo-instruct-0914
-gpt-3.5-turbo-0125
-gpt-4o-audio-preview-2024-12-17
-gpt-4o-realtime-preview-2024-12-17
-gpt-3.5-turbo
-text-embedding-3-large
-gpt-4o-realtime-preview
-text-embedding-3-small
-gpt-4-0125-preview
-gpt-4-1106-preview
-text-embedding-ada-002</code></pre>
+<pre><code>In a final battle against the Mind Flayer, Eleven uses all her strength, channeling both physical and mental abilities. This time, all the main characters join in, even those who were typically non-combatants, providing support both practically and emotionally.
+
+In a decisive moment, Eleven is almost overcome by the Mind Flayer. Mike, realizing that Eleven's powers are driven by her emotions, steps forward and confesses his love for her. This emotional outpouring gives Eleven the strength to definitively destroy the Mind Flayer and close the upside-down world forever.
+
+In the aftermath, the Department of Energy is held accountable for Hawkins Lab's experiments, prompting investigations and providing closure to the affected families. The Russian interference in Hawkins also gets exposed, leading to political tension.
+
+Because of all this, Hawkins becomes the focus of national attention, prompting the core characters to decide to move away in order to find a peaceful life elsewhere. The last scene shows them driving off, leaving Hawkins behind.
+
+In a mid-credit scene, a short clip shows a classroom in a different town where the new student is called – "Eleven," she smiles. Meanwhile, in another scene, Dustin finally manages to contact his girlfriend Suzie over the radio and they sing their infamous 'Never-ending Story' song, signifying a hopeful fresh start. This ties together loose ends while leaving the potential for a spin-off series or a sequel.</code></pre>
 </div>
 </div>
-<div id="500ed681-03d5-41bc-8b12-d962c8e31c37" class="cell" data-execution_count="18">
+<div id="acb1e024-cdfe-483d-9fb7-8955ae3b820d" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(manifest_alternative)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello folks, this is Joe Biden. Listen, it's important that we make our voices heard where it counts the most. The Republicans are steering the ship in this primary, but together, we can set a new course. Save your vote for the November general election. That's where we shape the future. Remember, the soul of America is on the ballot. So let's come together, stand strong, and build back better. Thank you, and God bless America.
----
-Hello folks, this is Joe Biden. I need you to listen up. In these challenging times, it's crucial we make our voices heard where it counts the most. Save your vote, your power, for the November general election. Let's focus on pushing forward together and shaping the future we all deserve. Don't let any narrative stop our progress. Remember, we're in this battle for the soul of our nation. Let's do this—together. Thank you.
----
-Hello folks, this is Joe Biden. Listen, as we gear up for November, remember that your vote is your voice, your power. While the primary's important, let's focus on the big picture. The Republicans might be loud now, but come November, it's our chance to make real change. So, hold on tight to that energy and make it count when it matters most. Together, we can build a better future. Thanks for listening and stay engaged. God bless you all, and God bless America.
----</code></pre>
+<pre><code>Instead of following the original ending where the story leaves various character’s fates ambiguous after the reappearing of Montego Air Flight 828, this alternative ending reveals more.
+
+As tensions mount under the increasing pressure of the prophetic 'death date', passengers of flight 828 decided to take the matter into their own hands. They rally together, gathering all the knowledge, expertise, and experiences they've collected since returning. Ben Stone leads the team, aided by his sister Michaela and brother-in-law Zeke, who beat his death date in the original series, convince him it can be beaten. They develop a theory that their shared explosive vision of the plane is the key to understanding their newfound abilities and the ultimate tool to beating the death date.
+
+A chemistry professor from the flight 828, takes his chance to analyze the visions, using it alongside scientific principles to detect a pattern. The passengers agree to let their brains be examined while they experience the visions, realizing that whenever the vision occurs, a specific part of their brain gets activated. Risking everything, they decide to artificially stimulate this brain region, hoping to understand its function better.
+
+Meanwhile, Saanvi and Adrian have been working on deciphering the origins of the DNA anomaly found in the passengers. Their research leads them to a groundbreaking discovery: the anomaly is not a mutation but a highly advanced form of gene therapy designed to activate latent psychic abilities in humans.
+
+This shocking revelation motivates the group even further. They eventually discover a means to control their abilities actively and use them to see beyond their personal death date in time. It’s like they’ve hacked their visions to see what they need and would like.
+
+In this moment of triumph, the story takes another surprising turn. The day everyone has been dreading arrives, their death date. However, they don’t find death but become aware of a new calling, a new vision leading them to a hidden, unknown location. The disappearance of flight 828 passengers repeats, only this time it’s not an accident. They all decided to embark on a new journey filled with countless possibilities leaving behind a world that pretty much gave up on them twice. 
+
+The show ends with a sense of hope for the passengers and their loved ones, while leaving behind a world puzzled by the true nature and purpose of Montego Air Flight 828.</code></pre>
 </div>
+</div>
+<div id="f9f043c8-e93c-4f90-9ca6-4b204e2798eb" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cobra_kai_alternative)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In the final tournament, Johnny Lawrence's Cobra Kai and Daniel LaRusso's Miyagi-Do face off once again. The pupils of both dojos fight spiritedly, ensuring both Dojos are evenly garnishing points. The deciding match comes down to Miguel Diaz, who is fighting for Cobra Kai, and Robby Keene, fighting for Miyagi-Do.
+
+Just as it looks like Miguel has the upper hand, time stops as he has vivid flashbacks of when he was severely injured during a previous fight which left him comatose. The match resumes. It's intense, mirroring the inherent tension between Johnny and Daniel from their youth, but Miguel loses focus, giving Robby the opportunity to win. But, in an unexpected twist, Robby opts not to exploit Miguel's vulnerability, demonstrating the teaching of his Sensei, Daniel LaRusso: "It is about being better than you were yesterday."
+
+Robby helps Miguel back to his feet, and the match resumes. After a long hard-fought battle from both sides, Miguel manages to win, but with the understanding that the real victory is not about defeating the opponent, but overcoming their own fears. 
+
+Meanwhile, Johnny and Daniel who are watching the fight, reflect upon the past and realize that it’s time to bury their old grudges. The series ends with a renewed hope for reconciliation between the two rivals and the possibility of them combining their dojo's to create a hybrid of their teachings, striving for balance and harmony, and moving forward for the betterment of their students.</code></pre>
+</div>
+</div>
+<div id="3f64db7b-2034-404d-bbf2-944337b8c8c5" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>qfoepqwifo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
