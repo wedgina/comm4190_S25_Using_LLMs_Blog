@@ -4,7 +4,14 @@
     "href": "index.html",
     "title": "My Explorations with LLMs",
     "section": "",
-    "text": "Can AI write better scripts than we can?\n\n\n\n\n\n\nLLMs\n\n\nCreativity\n\n\nTelevision\n\n\nNetflix\n\n\n\nAsking AI to create endings to my favorite shows\n\n\n\n\n\nFeb 19, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nTesting AI on Illusions\n\n\n\n\n\n\nLLMs\n\n\nPerception\n\n\nIllusions\n\n\nPerplexity\n\n\n\nIllusions get us because of our constructed perceptions, but what will AI models see since it doesn’t have perception?\n\n\n\n\n\nFeb 15, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nHow well can AI really know you?\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\nPersonality\n\n\nReason\n\n\nCognition\n\n\n\nDetermining whether ChatGPT can reason in regards to our personalities despite not having one of its own.\n\n\n\n\n\nFeb 15, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nMy experience with bias in AI\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\n\nDetermining ChatGPT’s familiarity with afrocentric features\n\n\n\n\n\nFeb 8, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nCan ChatGPT Logic Like We Do?\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\nLogic\n\n\n\nAsking Chat GPT to Play Hangman\n\n\n\n\n\nFeb 6, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nAI robocalls\n\n\n\n\n\n\nLLMs\n\n\nAPI\n\n\n\nTesting blogging\n\n\n\n\n\nFeb 4, 2025\n\n\nWedgina\n\n\n\n\n\n\nNo matching items"
+    "text": "Asking AI To Create Random Stories\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\nCreativity\n\n\nStory-Making\n\n\n\nCurious to see what kind of stories AI will create for random objects\n\n\n\n\n\nFeb 22, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nNA\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\nCreativity\n\n\nStory-Making\n\n\n\nNA\n\n\n\n\n\nFeb 22, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nCan AI write better scripts than we can?\n\n\n\n\n\n\nLLMs\n\n\nCreativity\n\n\nTelevision\n\n\nNetflix\n\n\n\nAsking AI to create endings to my favorite shows\n\n\n\n\n\nFeb 19, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nTesting AI on Illusions\n\n\n\n\n\n\nLLMs\n\n\nPerception\n\n\nIllusions\n\n\nPerplexity\n\n\n\nIllusions get us because of our constructed perceptions, but what will AI models see since it doesn’t have perception?\n\n\n\n\n\nFeb 15, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nHow well can AI really know you?\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\nPersonality\n\n\nReason\n\n\nCognition\n\n\n\nDetermining whether ChatGPT can reason in regards to our personalities despite not having one of its own.\n\n\n\n\n\nFeb 15, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nMy experience with bias in AI\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\n\nDetermining ChatGPT’s familiarity with afrocentric features\n\n\n\n\n\nFeb 8, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nCan ChatGPT Logic Like We Do?\n\n\n\n\n\n\nLLMs\n\n\nPrompting\n\n\nLogic\n\n\n\nAsking Chat GPT to Play Hangman\n\n\n\n\n\nFeb 6, 2025\n\n\nWedgina Norelus\n\n\n\n\n\n\n\n\n\n\n\n\nAI robocalls\n\n\n\n\n\n\nLLMs\n\n\nAPI\n\n\n\nTesting blogging\n\n\n\n\n\nFeb 4, 2025\n\n\nWedgina\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post-Copy1.html",
+    "href": "posts/006_sixth_post/Sixth_Post-Copy1.html",
+    "title": "NA",
+    "section": "",
+    "text": "Asking AI To Create Random Stories\n\nfrom dotenv import load_dotenv\nfrom anthropic import Anthropic\nimport base64\nimport httpx\nfrom IPython.display import display, Image, Markdown\n\n# load api keys\n_ = load_dotenv()\n\nTrue\n\n\n\nclient = Anthropic()\n\n\ndef encode_image(image_path):\n  with open(image_path, \"rb\") as image_file:\n    return base64.b64encode(image_file.read()).decode('utf-8')\n\n\nimage_path = \"IMG_0159.PNG\"\nimage_media_type = \"image/PNG\"\n\n\nresponse = client.messages.create(\n    model=\"claude-3-5-sonnet-20241022\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant that can analyze images.\"},\n        {\"role\": \"user\", \"content\": [\n            {\"type\": \"text\", \"text\": \"Create a sad story for this watermelon\"},\n            {\"type\": \"image_url\", \"image_url\": f\"data:image/jpeg;base64,{encode_image(image_path)}\"}\n        ]}\n    ],\n    max_tokens=600\n)\n\nprint(response[\"choices\"][0][\"message\"][\"content\"])\n\n\n---------------------------------------------------------------------------\nFileNotFoundError                         Traceback (most recent call last)\nCell In[17], line 7\n      1 response = client.messages.create(\n      2     model=\"claude-3-5-sonnet-20241022\",\n      3     messages=[\n      4         {\"role\": \"system\", \"content\": \"You are a helpful assistant that can analyze images.\"},\n      5         {\"role\": \"user\", \"content\": [\n      6             {\"type\": \"text\", \"text\": \"Create a sad story for this watermelon\"},\n----&gt; 7             {\"type\": \"image_url\", \"image_url\": f\"data:image/jpeg;base64,{encode_image(image_path)}\"}\n      8         ]}\n      9     ],\n     10     max_tokens=600\n     11 )\n     13 print(response[\"choices\"][0][\"message\"][\"content\"])\n\nCell In[13], line 2, in encode_image(image_path)\n      1 def encode_image(image_path):\n----&gt; 2   with open(image_path, \"rb\") as image_file:\n      3     return base64.b64encode(image_file.read()).decode('utf-8')\n\nFile /opt/jupyterhub/share/jupyter/venv/python3-12_comm4190/lib/python3.12/site-packages/IPython/core/interactiveshell.py:324, in _modified_open(file, *args, **kwargs)\n    317 if file in {0, 1, 2}:\n    318     raise ValueError(\n    319         f\"IPython won't let you open fd={file} by default \"\n    320         \"as it is likely to crash IPython. If you know what you are doing, \"\n    321         \"you can use builtins' open.\"\n    322     )\n--&gt; 324 return io_open(file, *args, **kwargs)\n\nFileNotFoundError: [Errno 2] No such file or directory: 'comm4190_S25/comm4190_S25_Using_LLMs_Blog/posts/006_sixth_post/img/IMG_0159.PNG'"
   },
   {
     "objectID": "posts/robocall/robocall.html",
@@ -173,6 +180,48 @@
     "title": "How well can AI really know you?",
     "section": "",
     "text": "Considering that it kind of missed the mark on the first question in relation to details about who I am and my personality, I prompted it specifically about my personality. And it can for sure use the knowledge it “remembers” about me to reason about the type of person it thinks I am, but I find it interesting that within its memory, it doesn’t have these traits or this reasoning relationship as part of its memory, which I find to be different from humans. At least within my memory of a person, I will remember things like, oh this person is innovative or random or annoying–in addition to the objective things I know about them as well. That kind of reasoning goes hand in hand with memory and perception of others (and their personality)."
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post.html",
+    "href": "posts/006_sixth_post/Sixth_Post.html",
+    "title": "Asking AI To Create Random Stories",
+    "section": "",
+    "text": "I was curious as to how AI would choose to generate stories for random objects that have no lives or living qualities. I went through my camera roll and selected photos of objects one wouldn’t think too much of, but I found interesting trying to figure out the backstory of how those things happened, when I took them. I wondered how interesting the stories AI could create in opposition to what I could’ve possibly created myself. I gave in these objects to Claude AI to test its story generation properties.\n\n\n\n\n\nThe first time I noticed this car came from a time I was trying to jumpstart my car because the battery died. And ever since I noticed it the first time, I was never able to unsee it. To be honest I just assumed the driver was someone older. I asked Claude to create a small and interesting story as to what could have happened. I told it to do so in the style of action genre to spice it up.\n\n\n\n\nOn a scale of 1 to 10 I give this story a 9. I think it’s a pretty interesting story and does a good job adhering to the theme.\n\n\n\n\n\n\nTo be honest, I can’t even explain what happened to these frames at all. I just know I took them off one day and the frame split because of a loose screw and boom my lens left the conversation. I sat there and looked at them in shock, frantically trying to figure out how I would get a new pair.\n\n\n\n\nFor this prompt I actually asked it, to just write a story about what it thinks happened to these glasses. I thought it was interesting it went in a very sentimental and dramatic direction. It’s not as interesting as the other one, but it does the job and still does a good job\n\n\n\n\n\n\n\n\n\nFor the prompt for this one, I asked Claude to write a sad story about what could have happened to this watermelon. With the original image, I had just came back from the mall. I went to go pick up my computer from the apple store because it had battery issues, and I stumbled upon this. I questioned how it was possible that this happened to this watermelon, it looks so deflated.\n\nI think it also does a good job here, although a tad dramatic as well. But the idea I would give in this story if I were to do it myself, is that Tommy was carrying the watermelon to his sister’s grad party, and that some bullies came and destroyed it, because to me it looks more like someone kicked it or smushed it with their foot."
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post.html#object-1",
+    "href": "posts/006_sixth_post/Sixth_Post.html#object-1",
+    "title": "Asking AI To Create Random Stories",
+    "section": "",
+    "text": "The first time I noticed this car came from a time I was trying to jumpstart my car because the battery died. And ever since I noticed it the first time, I was never able to unsee it. To be honest I just assumed the driver was someone older. I asked Claude to create a small and interesting story as to what could have happened. I told it to do so in the style of action genre to spice it up."
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post.html#story-1",
+    "href": "posts/006_sixth_post/Sixth_Post.html#story-1",
+    "title": "Asking AI To Create Random Stories",
+    "section": "",
+    "text": "On a scale of 1 to 10 I give this story a 9. I think it’s a pretty interesting story and does a good job adhering to the theme."
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post.html#object-2",
+    "href": "posts/006_sixth_post/Sixth_Post.html#object-2",
+    "title": "Asking AI To Create Random Stories",
+    "section": "",
+    "text": "To be honest, I can’t even explain what happened to these frames at all. I just know I took them off one day and the frame split because of a loose screw and boom my lens left the conversation. I sat there and looked at them in shock, frantically trying to figure out how I would get a new pair."
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post.html#story-2",
+    "href": "posts/006_sixth_post/Sixth_Post.html#story-2",
+    "title": "Asking AI To Create Random Stories",
+    "section": "",
+    "text": "For this prompt I actually asked it, to just write a story about what it thinks happened to these glasses. I thought it was interesting it went in a very sentimental and dramatic direction. It’s not as interesting as the other one, but it does the job and still does a good job"
+  },
+  {
+    "objectID": "posts/006_sixth_post/Sixth_Post.html#story-3",
+    "href": "posts/006_sixth_post/Sixth_Post.html#story-3",
+    "title": "Asking AI To Create Random Stories",
+    "section": "",
+    "text": "For the prompt for this one, I asked Claude to write a sad story about what could have happened to this watermelon. With the original image, I had just came back from the mall. I went to go pick up my computer from the apple store because it had battery issues, and I stumbled upon this. I questioned how it was possible that this happened to this watermelon, it looks so deflated.\n\nI think it also does a good job here, although a tad dramatic as well. But the idea I would give in this story if I were to do it myself, is that Tommy was carrying the watermelon to his sister’s grad party, and that some bullies came and destroyed it, because to me it looks more like someone kicked it or smushed it with their foot."
   },
   {
     "objectID": "posts/001_my_first_post/test_post.html",
