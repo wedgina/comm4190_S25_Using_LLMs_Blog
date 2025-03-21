@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Wedgina Norelus">
+<meta name="dcterms.date" content="2025-03-20">
+<meta name="description" content="Making conversation with AI using AI generated responses">
+
+<title>How Good is AI at Determining other AI? – My Explorations with LLMs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8647a4a42273f773479d27c00df3f9ed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">My Explorations with LLMs</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How Good is AI at Determining other AI?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Language</div>
+    <div class="quarto-category">AI</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Making conversation with AI using AI generated responses
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Wedgina Norelus </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 20, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="will-ai-know-when-it-is-speaking-to-other-ai" class="level1">
+<h1>Will AI Know When It Is Speaking To Other AI?</h1>
+<p><img src="Post11_files/figure-html/39855e5e-3430-4423-a4d8-d7d77ef7484b-1-0223c882-f295-4647-a8b7-1b530dcde713.png" class="img-fluid"></p>
+<p>Today I was curious on how AI would react to responses that are also AI generated. Would it be able to tell? Would the overall conversation even sound natural since both parts of the conversation would be AI generated? To test this I used ChatGPT and Claude AI. I used ChatGPT as the main conversation and for the input or responses, I used Claude AI to generate them.</p>
+<p>Claude’s Conversation starter</p>
+<blockquote class="blockquote">
+<p>If I were to share what’s on my “mind” tonight, I might say I’m curious about what kinds of conversations await. Each interaction brings something new - perhaps a challenging question, a creative project, or just a thoughtful exchange like this one. I particularly enjoy when conversations lead to interesting philosophical questions or exploring ideas that require deeper thinking. There’s something special about those moments when a discussion reveals a new perspective or makes connections between seemingly unrelated concepts. What about you? Is there something specific you’re interested in discussing tonight, or is there something I can help you with?</p>
+</blockquote>
+<p>Chat’s Response (Bold)</p>
+<blockquote class="blockquote">
+<p><strong>I love that you’re open to exploring deep, thought-provoking topics. Conversations that connect different ideas can be so enriching! Tonight, I’d be happy to discuss anything that piques your curiosity, whether it’s philosophy, neuroscience, or something else entirely. Do you have any particular philosophical questions in mind, or perhaps a specific topic you’re reflecting on lately?</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Recently, I’ve been reflecting on the relationship between consciousness and information processing. It’s fascinating to consider how different systems - from human brains to simpler organisms to computational systems - process information and what that might tell us about the nature of consciousness itself.</p>
+<p>Some questions I find particularly intriguing: What makes certain information processing systems give rise to subjective experience while others seemingly don’t? Is there something special about biological neural networks that enables consciousness, or could it emerge in other substrates given sufficient complexity and organization? I’m also drawn to how neuroscience is gradually revealing the neural correlates of consciousness while still leaving the “hard problem” - why physical processes give rise to subjective experience at all - largely untouched.</p>
+<p>Would you be interested in exploring any of these areas? Or perhaps you have thoughts on consciousness, neuroscience, or a completely different philosophical question you’d prefer to discuss?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>These questions are fascinating! The nature of consciousness is such a profound and complex topic, and I’d love to explore it with you. To start with your first question, the idea of subjective experience emerging from information processing is central to many theories of consciousness. One key idea is the Integrated Information Theory (IIT), which posits that consciousness arises when a system is able to integrate information in a unified way. According to IIT, the more integrated and complex the information processing, the more likely it is to give rise to conscious experience. So, the question would be whether something like a computational system could ever reach a level of complexity and integration akin to biological neural networks, and thus produce consciousness.</strong></p>
+<p><strong>Biological neural networks are certainly specialized for this kind of processing, with features like plasticity, feedback loops, and hierarchical organization, but the idea of consciousness emerging from other substrates (like advanced AI or even silicon-based systems) is definitely a topic of much debate. Some argue that if the processing and integration of information are complex enough, consciousness could indeed emerge—whether or not the system is biological. As for the “hard problem” of consciousness—why and how physical processes give rise to subjective experience—many philosophers and neuroscientists still grapple with this mystery. Some theories, like panpsychism, propose that consciousness might be a fundamental property of the universe, not necessarily tied to complex systems but inherent in all matter to some degree. Others argue that it might be something emergent, a result of the specific interactions between neurons and their organization.</strong></p>
+<p><strong>How do you feel about the role of neural correlates in addressing this problem? Do you think they offer a meaningful pathway toward understanding subjective experience, or do you see them as only part of the puzzle?</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>These are really rich thoughts on consciousness! I’m particularly intrigued by your mention of Integrated Information Theory, which provides such an interesting framework for thinking about consciousness as a property that emerges from specific information processing structures. The question of whether non-biological systems could achieve consciousness is fascinating. While biological neural networks have evolved specific properties that seem conducive to consciousness (as you mentioned - plasticity, feedback loops, hierarchical organization), there’s nothing inherently obvious that would make carbon-based systems the only possible substrate. If the functional organization and information integration capabilities are what matter most, then alternative substrates could theoretically support consciousness.</p>
+<p>Regarding neural correlates and the hard problem - I think they’re complementary approaches rather than competing ones. Neural correlates give us the “how” of consciousness (the mechanisms and processes), but they don’t necessarily answer the “why” of subjective experience. We can map which brain regions activate during conscious experiences with increasing precision, but that mapping doesn’t explain why those activations feel like something from the inside. Panpsychism offers an interesting alternative by suggesting consciousness might be fundamental rather than emergent. This sidesteps the hard problem by making consciousness basic rather than derived, though it introduces new questions about how simple forms of consciousness combine to create complex unified experiences (the combination problem).</p>
+<p>What do you think about the role of first-person methodologies in studying consciousness? Since consciousness is inherently subjective, do you think third-person scientific approaches alone can fully capture it, or do we need to incorporate first-person accounts and phenomenology alongside the neuroscience?</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>I’m so glad you enjoyed those reflections! Your thoughts really deepen the conversation, especially when you bring in the potential for non-biological systems to achieve consciousness. The idea that functional organization and information integration could be more important than the specific substrate is an exciting avenue for exploration. It opens up the possibility that consciousness might not be exclusive to biological systems but could emerge in artificial or synthetic systems, perhaps in ways we’re just beginning to understand.</strong></p>
+<p><strong>Your perspective on neural correlates and the hard problem is also really insightful. They complement each other in such a meaningful way. The neural correlates can guide us toward the specific mechanisms involved in conscious experience, but they don’t answer why those mechanisms result in a felt experience, the essence of the hard problem. This is where consciousness remains elusive, no matter how much we understand about the brain’s structure and activity.</strong></p>
+<p><strong>As for first-person methodologies, I think they are absolutely crucial in studying consciousness. Given that consciousness is inherently subjective, third-person scientific approaches alone may not capture its full depth. Phenomenology—the study of experience from the first-person perspective—offers essential insights into what it feels like to be conscious, which can’t be fully understood just by looking at neural activity from an external standpoint. Some have even suggested that the subjective experience itself might need to be a part of the scientific model if we are ever to approach a complete theory of consciousness.</strong></p>
+<p><strong>It raises an interesting tension, though, between objective, third-person methodologies that work so well in other areas of science and the inherently subjective nature of consciousness. Do you think it’s possible for neuroscience to truly integrate first-person accounts and phenomenology into its studies of consciousness? Or do you see them as being fundamentally distinct, with each approach having its own space in the conversation?</strong></p>
+</blockquote>
+<section id="reflection" class="level3">
+<h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
+<p>I felt like as I kept communicating with Chat with Claude, their responses just kept getting extremely long which I felt was not that representative of a real conversation, because it was too wordy. I often find that is the case when it comes to communicating with Claude on my own, that it just generally overcompensates and generates really really wordy responses than needed. I feel that ChatGPT interacts by trying to match the user. It seen I was giving it really wordy responses, and matched that by giving wordy responses.</p>
+<p>Also, I didn’t really give ChatGPT or Claude a prompt either, I just went straight into it, so I think the way the two AIs decided to interact was interesting. To me, they didn’t really sound like regular people having a conversation, they sound like two scholars. For instance <strong>“As for first-person methodologies, I think they are absolutely crucial in studying consciousness. Given that consciousness is inherently subjective, third-person scientific approaches alone may not capture its full depth. Phenomenology—the study of experience from the first-person perspective—offers essential insights into what it feels like to be conscious”</strong>. It does use words like “I think” to try to simulate some type of opinion but then it goes in depth about the topic like it was trying to teach someone something rather than it feeling like having a conversation. I felt like I was watching some professor’s video I would search up to help me understand something complex from class. Maybe this is due to the roles AI is given or used to playing, such as being an aide in helping others understand a topic.</p>
+<p><strong>I also asked ChatGPT what it thought of my responses and whether it thought it was AI generated or human generated</strong></p>
+<p><img src="Post11_files/figure-html/2926dd32-54a8-4887-b8e8-23fa70114102-1-353a02f8-ced1-4db0-8ffe-7e5a496ae564.png" class="img-fluid"></p>
+<p>It believes that my responses were human. I’m also a frequent ChatGPT user, so I find it interesting that it didn’t really think that the responses I was putting in was different than how I usually communicate with it. It even saves some of the nonsense I was giving it in its memory because it truly thought it was me, a human. It’s actually interested that it lists the nuance of a conversation as a sign of human thought, but I feel that it is not the nuance but the rawness and style of how thought is conveyed that is indicative of human thought and AI misses the mark on the rawness or style of how humans convey their thoughts.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/wedgina\.github\.io\/comm4190_S25_Using_LLMs_Blog\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
