@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Wedgina Norelus">
+<meta name="dcterms.date" content="2025-03-21">
+<meta name="description" content="Rating how good the suggestions that come from Spotify DJ are">
+
+<title>My experience with Spotify DJ – My Explorations with LLMs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-8647a4a42273f773479d27c00df3f9ed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">My Explorations with LLMs</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My experience with Spotify DJ</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Music</div>
+    <div class="quarto-category">Spotify</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Rating how good the suggestions that come from Spotify DJ are
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Wedgina Norelus </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 21, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="determining-whether-i-still-like-spotify-dj-or-not" class="level1">
+<h1>Determining Whether I Still Like Spotify DJ Or Not</h1>
+<p>Today I will being the Spotify DJ which uses AI to curate a selection of songs for the user. I don’t really use it often, but when used it chooses songs based on what I’ve been listening to or songs it thinks I would listen to. The AI speaks for a few seconds to introduce the songs it will play and why and then plays a few songs, and it does this over and over again. Typically my music style features genres from the Caribbean, such as DanceHall, Konpa, Raboday and then some Afrobeats and modern day Rap. As for my expectations for the Spotify AI, I have little faith in it curating a playlist that I would actually enjoy because when I used it a few years back it felt like it had no data on me at all and like it was ignoring music that just wasn’t primarily in English. So I am wondering how it will be different this time. I used the songs it gave me and put it in a playlist for anyone who is interested in any of the songs or wants to follow along with this blog</p>
+<p>https://open.spotify.com/playlist/27vkJiB5NCRwMnaeh40zs7?si=2d3191410bfe4910&amp;pt=a66b38edd3796ae626fba70f2c9786d4</p>
+<p>I am aware Spotify DJ is still in its testing phase and isn’t supposed to be taken like it is perfect.</p>
+<p><img src="Post12_files/figure-html/d7c48bc6-4481-45e0-aa33-4df912a128d8-1-0c2865bf-cb70-460e-808a-968d366c00c7.png" class="img-fluid"></p>
+<section id="round-1" class="level3">
+<h3 class="anchored" data-anchor-id="round-1">Round 1</h3>
+<p><strong>Segment 1: In this round the DJ begins by talking about giving me music about an artist named DJ Crazy Jay. The songs from this segment are below</strong></p>
+<ol type="1">
+<li>On ti Gouyad - DJ CRAZY JAY</li>
+<li>Después De La 1 - Cris Mj, Floyy Menor, LOUKII</li>
+<li>Wine Slow - Gyptian</li>
+<li>M ANVI BOW - Bedjine and kdilak mesaje a</li>
+<li>Safe - Michaël Brun, Rutshell Guillaume, John Legend</li>
+</ol>
+<p><strong>Segment 2:The next segment composed of these songs:</strong></p>
+<ol type="1">
+<li>Shake Body - Skales</li>
+<li>Bedroom Bully - Busy Signal (This song made me very understimulated and I hated the beat)</li>
+<li>Bad - Blaiz Fayah, Tribal Kush</li>
+<li>Bicycle Ride - Vybz Kartel, Bunji Garlin (I really liked the rhythm of this song)</li>
+<li>Ameno Amapiano - Goya Menor, Nektunez (this one was certainly um, interesting… I didn’t know how I felt about this one. I think I both hate and love it somehow.)</li>
+<li>Mek it Bunx Up - DeeWunn, Marcy Chin</li>
+</ol>
+<p>I hadn’t heard of much of these songs except for 1 and 6.</p>
+<p><strong>Segment 3: The next segment composed of these songs</strong></p>
+<ol type="1">
+<li>Naked - Ella Mai</li>
+<li>My Boo - USHER, Alicia Keys</li>
+<li>How do you sleep? - Sam Smith (I skipped this, I don’t think I can stand listening to this in present day)</li>
+<li>Leave The Door Open - Bruno Mars, Anderson.Paak, Silk Sonic</li>
+<li>Take it All - Kiana Ledé</li>
+</ol>
+<p>I think this was supposed to be R &amp; B/throwbacks it was recommending me, but I am confused on why How Do You Sleep fit in or was here.</p>
+<p>I also questioned the reasons it determined it should play these…</p>
+<p><strong>Segment 4:The next segment</strong></p>
+<ol type="1">
+<li>Nobody Has To Know - Kranium, Ty Dolla $ign (I typically listen to the original version without Ty Dolla $ign and to be honest I think I do prefer that version)</li>
+<li>Afrodisiac - Brandy (sue me, but I’ve never listened to this song before, I thought it was really catchy lol)</li>
+<li>Pense à Moi - Gage (I get that this song was supposed to be chill, but it also understimulated me. I wasn’t a fan of the beat used, the song is in French but like I don’t like that the song sound like we in a Parisian coffee shop, and it’s 7 minutes long. Like why ?)</li>
+<li>Lower Body - Chris Brown, Davido (eh)</li>
+</ol>
+<p>I feel like I was only really into one song in this entire segment, so I found this a miss</p>
+</section>
+<section id="round-2" class="level3">
+<h3 class="anchored" data-anchor-id="round-2">Round 2</h3>
+<p><strong>Segment 1: I did another Dj session to see what kind of songs and what vibe it would give this time</strong></p>
+<ol type="1">
+<li>Pedi Kontwol - Oswald, Steves J Bryan</li>
+<li>Fem Voyé - Joé Dwèt Filé</li>
+<li>Trip in Motion - Drs (I found it really interesting that the DJ actually suggested a song that was just instrumental. Some people would see this as an “error”, but like as a Haitian, a lot of our songs are instrumentals. There be lyrics for like 2 minutes and the remaining 3-4 minutes be just instrumentals. Sometimes we regularly just listen to instrumentals like they’re just full songs. Since this isn’t the experience for many other people, I thought this was interesting that DJ actually did this.)</li>
+<li>Laptop - Kalash, Maureen</li>
+<li>Hit &amp; Run - Shenseea, Masicka, Di Genius</li>
+</ol>
+<p>I can see that here it was giving me suggestions that were Caribbean oriented mostly between Haiti and Jamaica. I was a lot more satisfied with these selections than the last segment.</p>
+<p><strong>Next Segment: Segment 2</strong></p>
+<ol type="1">
+<li>Peru - Fireboy DML, Ed Sheeran</li>
+<li>Call me by your name - Lil Nas X, (I kinda feel the same about this one like with How Do You Sleep, but I like this one better. I didn’t skip it this time)</li>
+<li>Ta Ta Ta - Bayanni, Jason Derulo (I think the song is nice but to be honest, I think only like hearing it on tiktok and not as an actual song on spotify)</li>
+<li>Del mar - Ozuna, Doja Cat, Sia (This actually has nothing to do with how well DJ is able to pick songs for me actually, but for the song itself, I kind of wish Doja Cat rapped in Spanish like Sia did, Doja’s part - while not bad, I feel sticks out to me like a sore thumb which I do not like)</li>
+<li>Ku Lo sa - Oxlade, Camila Cabello (completely skipped tbh, I feel like this song was too overplayed for me in the past)</li>
+</ol>
+<p>I realize for this segment it was also giving kinda more throwback songs to a few years ago. I kind of like this section because its features collabs between artist from different fields, like Afrobeats and pop with Fireboy DML &amp; Ed Sheeran or Reggaeton and Pop like with Ozuna and Sia</p>
+<p><strong>Next Section: Segment 3</strong></p>
+<ol type="1">
+<li>Zimbabwe - Bob Marley &amp; The Wailers</li>
+<li>More Love - Eric Donaldson</li>
+<li>I shot the Sheriff - The Wailers</li>
+<li>My only Lover - Gregory Isaacs</li>
+</ol>
+<p>I know for this portion it played me reggae songs, which I found mad interesting because I felt it had very different vibe than what I had previously listened to. Reggae is not really a genre I really listen to often or would choose to put it on myself like that, I think I’ve listened to it like twice on spotify</p>
+<p><strong>Segment 4: Spotify DJ described this as a Grind vibe that it was giving me?:</strong></p>
+<ol type="1">
+<li>Gang Gang - Polo G, Lil Wayne</li>
+<li>Straightenin - Migos</li>
+<li>Run it Up - Lil Tjay, Offset, Moneybagg yo</li>
+<li>Down Below - Roddy Ricch</li>
+<li>Vibez - Dababy (skipped for the same reason as How Do You Sleep)</li>
+</ol>
+<p>These songs are songs I would listen to like back in the day, I haven’t listened to these in a while. But not much comment here</p>
+<p>I feel like this session started off strong but ended pretty weak, and it wasn’t really fitting to the current vibe.</p>
+</section>
+<section id="round-3" class="level3">
+<h3 class="anchored" data-anchor-id="round-3">Round 3</h3>
+<p>This is my last session using Spotify’s DJ</p>
+<p><strong>Segment 1</strong></p>
+<ol type="1">
+<li>Komasava - Diamond Platnumz, Khalil Harrison, Chley</li>
+<li>Let’s groove - Earth, Wind &amp; Fire (I genuinely don’t understand how this is here, like how does fit in with anything here? Where did this even come from? I’ve never even listened to this song on Spotify)</li>
+<li>Big Flexa - Costa Titch, Sdida, Alfa Kat, Man T…</li>
+<li>Bumbum Granada - MC’s Zaac, Jerry Smith</li>
+<li>Dalie - Kamo Mphela, Tyler ICU, Khalil Harrison…</li>
+</ol>
+<p>I actually think here, that AI does a good job of recognizing the music types I like though and from cultures I listen to and suggesting to me a culture’s music I would particularly be interested in. It is not uncommon for me to listen to Afrobeats or music from other regions in Africa, so I think it does a good job of suggesting songs from Southern Africa like the ones here despite me not having really listened to much before. In the previous segments I think it tried to do the same with the Reggae because it seen I tend to like music from Caribbean cultures, but I don’t know I wasn’t too into it at the time, which I kind of consider a miss.</p>
+<p>I’m not really sure of DJ’s algorithm to determine patterns or properties from songs I listen to, but I also tend to listen to songs with harder beats and those with softer beats tend to understimulate me and not capture much of my attention, which I found impressive when it suggested to me the fourth song, which is in Portuguese and not from South Africa but it is similar to other songs in terms of how hard the beats hit, which I consider this segment to be a hit.</p>
+<p><strong>The reason the AI gave for playing these songs was that it was March and women’s history month.</strong></p>
+<p><strong>Segment 2</strong></p>
+<ol type="1">
+<li>take your vibes and go - Kito, Kah-lo, brazy, Baauer</li>
+<li>Melodrama - Angelina Mango</li>
+<li>Passe ton chemin - Lynda</li>
+<li>Best Lover - 88rising, BIBI</li>
+</ol>
+<p>All of these songs are songs I’ve never heard of actually, but I actually like them and think they’re really catchy with the exception of the last one.</p>
+<p><strong>Segment 3: DJ chose these songs for me because they’re “Catchy”</strong></p>
+<ol type="1">
+<li>GIRLS - KYLE, Rico Nasty (I feel the same about this one as the How Do You Sleep one)</li>
+<li>I’m in control - AlunaGeorge, Popcaan</li>
+<li>Baba - Aminé</li>
+</ol>
+<p>I feel the same about this round, I feel it started off pretty strong but I was not really that invested in the end.</p>
+</section>
+</section>
+<section id="overall" class="level1">
+<h1>Overall</h1>
+<p>I feel like overall I found it to be the case that I would actually be really invested in the beginning and maybe the middle of each DJ session but after like 3 or 4 segments in it kind of goes downhill for me, which to be honest is better than the past, where I used to be completely uninvested in anything it suggested before. Perhaps it is getting trained better to recognize properties of music liked/listened to by the user. I think I can agree with this because I feel like when I tried this back when it was newer in like maybe 2022ish, it never really suggested to me music that was in a different language other than Spanish and English, but now in 2025 I find that now it actually suggests to me other languages such as French here or Haitian Creole. However there is still work that needs to be done, as Spotify still see Haitian genres as the same as another genre called Zouk, which is largely a human error as those behind this AI are ignorant in knowing the difference probably.</p>
+<p>Although I had some new songs I didn’t really click with, I found that I actually had a decent experience listening to new songs it suggested me and I think I will definitely listen to them in the future for real.</p>
+<p>I was not disappointed by my experience. I did find myself to be skipping songs or disappointed by the song that was playing but I also find that to be the case when it comes to humans. I be skipping songs left and right until I find one that fits the right vibe or mood so considering that humans are also like this as well, I think DJ did a good job. I think also it captures the experience of trying to find new songs accurately too. Sometimes when you trying to venture out to new music it is hard and there are often hits or misses, there is not going to be a hit everytime and this was the case with DJ today.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/wedgina\.github\.io\/comm4190_S25_Using_LLMs_Blog\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
