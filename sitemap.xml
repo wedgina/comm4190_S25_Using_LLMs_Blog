@@ -2,82 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/005_Fifth_Post/Fifth_Blog.html</loc>
-    <lastmod>2025-04-10T06:15:30.025Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.473Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/013_13th_Post/Post_13.html</loc>
-    <lastmod>2025-04-10T06:15:30.151Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.596Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/003_Third_Post/3rd_Blog_Post.html</loc>
-    <lastmod>2025-04-10T06:15:30.011Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.458Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/017_17th_Post/017_Post_17.html</loc>
-    <lastmod>2025-04-10T06:15:30.187Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.633Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/002_Second_Post/2nd_Blog_Post.html</loc>
-    <lastmod>2025-04-10T06:15:29.933Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.381Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/004_Fourth_Post/Fourth_Blog.html</loc>
-    <lastmod>2025-04-10T06:15:30.018Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/006_sixth_post/Sixth_Post.html</loc>
-    <lastmod>2025-04-10T06:15:30.025Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/011_Post_11/Post11.html</loc>
-    <lastmod>2025-04-10T06:15:30.143Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/007_Seventh_Post/007_Seventh_post.html</loc>
-    <lastmod>2025-04-10T06:15:30.108Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/008_Eighth_Post/Eighth_Post.html</loc>
-    <lastmod>2025-04-10T06:15:30.108Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
-    <lastmod>2025-04-10T06:15:29.928Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
-    <lastmod>2025-04-10T06:15:29.928Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/016_16th_Post/16th_Post.html</loc>
-    <lastmod>2025-04-10T06:15:30.187Z</lastmod>
-  </url>
-  <url>
-    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/robocall/robocall.html</loc>
-    <lastmod>2025-04-10T06:15:30.188Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.466Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_my_first_post/test_post.html</loc>
-    <lastmod>2025-04-10T06:15:29.933Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.381Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/robocall/robocall.html</loc>
+    <lastmod>2025-04-12T00:19:26.646Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/016_16th_Post/16th_Post.html</loc>
+    <lastmod>2025-04-12T00:19:26.632Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
+    <lastmod>2025-04-12T00:19:26.376Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
+    <lastmod>2025-04-12T00:19:26.376Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/008_Eighth_Post/Eighth_Post.html</loc>
+    <lastmod>2025-04-12T00:19:26.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/007_Seventh_Post/007_Seventh_post.html</loc>
+    <lastmod>2025-04-12T00:19:26.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/011_Post_11/Post11.html</loc>
+    <lastmod>2025-04-12T00:19:26.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/006_sixth_post/Sixth_Post.html</loc>
+    <lastmod>2025-04-12T00:19:26.473Z</lastmod>
+  </url>
+  <url>
+    <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/018_18th_Post/018_Post_18.html</loc>
+    <lastmod>2025-04-12T00:19:26.646Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/010_Tenth_Post/Tenth_Post.html</loc>
-    <lastmod>2025-04-10T06:15:30.129Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.575Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/012_Post_12/Post12.html</loc>
-    <lastmod>2025-04-10T06:15:30.151Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.596Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/009_Ninth_Post/Ninth_Post.html</loc>
-    <lastmod>2025-04-10T06:15:30.120Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.566Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/015_15th_Post/Post15.html</loc>
-    <lastmod>2025-04-10T06:15:30.186Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.631Z</lastmod>
   </url>
   <url>
     <loc>https://wedgina.github.io/comm4190_S25_Using_LLMs_Blog/posts/014_14th_Post/014_Post_14.html</loc>
-    <lastmod>2025-04-10T06:15:30.156Z</lastmod>
+    <lastmod>2025-04-12T00:19:26.601Z</lastmod>
   </url>
 </urlset>
