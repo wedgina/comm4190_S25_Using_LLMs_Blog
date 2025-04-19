@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="writing-creative-stories-with-google-gemini" class="level1">
 <h1>Writing Creative Stories with Google Gemini</h1>
-<p><img src="020_20th_Post_files/figure-html/ec2871b7-ff5c-4964-afb9-5bf067172f92-1-9916616d-0882-449b-acde-4470cb4dda7a.png" class="img-fluid"></p>
+<p><img src="020_20th_Post_files/figure-html/ec2871b7-ff5c-4964-afb9-5bf067172f92-1-90e6388a-272d-4e91-9e03-fa5dde427750.jpg" class="img-fluid"></p>
 <p>Not sure who remembers what madlibs are, but when I was younger my teachers used to have us doing them for funsies. They’re a story filled with a few blanks throughout the passage, of a story that’s supposed to be funny and random and you’re supposed to fill them in to have a funny story. We used to give random words based on what that blank required (adjective, verbs, noun, etc)—Wait a minute, I just realized that they did this to get us to also practice grammar at the same time. Since LLMs are not humans do they even get humor and creativity like we do? Or will they just choose random nonsense to fill in the blanks? Today I am going to be using Google Gemini to see how it will go about filling in those blanks.</p>
 <div id="d024644a-a788-4b61-8932-a7ee88bb6abb" class="cell" data-execution_count="10">
 <details class="code-fold">
@@ -233,45 +233,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="madlib-1-a-story-about-zombies" class="level3">
 <h3 class="anchored" data-anchor-id="madlib-1-a-story-about-zombies">Madlib 1: A story about zombies</h3>
 <p><img src="020_20th_Post_files/figure-html/f21b9f50-e3c4-42df-9cc3-e693591a6c6a-1-57df0c0b-1b4d-4e0b-bc7f-0623903364ad.jpg" class="img-fluid"></p>
-<div id="3cbe5365-d5ec-4b31-b57e-a411ad5f6100" class="cell" data-execution_count="17">
+<div id="3cbe5365-d5ec-4b31-b57e-a411ad5f6100" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>zombies <span class="op">=</span> create_madlibs(<span class="st">"zombpie-picnic-1.jpg"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>zombies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(zombies))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>"If zombies **photobombed** a picnic, what would they **skip** to eat? Everybody knows zombies love to **gnaw** **eyeballs**, but did you know they also enjoy **toes** and even **earlobes**? The best **weather** for a zombie picnic is when the moon is **full**. At least one zombie will bring **pond water** to drink, and it's not a picnic without **fingernails** with extra **earwax** on top. After eating, zombies will **vomit** **slimy** games like kick the **spleen** and **intestine** toss.\n"</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>If zombies <strong>photobombed</strong> a picnic, what would they <strong>groan</strong> to eat? Everybody knows zombies love to <strong>gnaw</strong> <strong>fingers</strong>, but did you know they also enjoy <strong>toes</strong> and even <strong>eyeballs</strong>? The best <strong>graveyard</strong> for a zombie picnic is when the moon is <strong>putrid</strong>. At least one zombie will bring <strong>pond water</strong> to drink, and it’s not a picnic without <strong>earwax</strong> with extra <strong>toe jam</strong> on top. After eating, zombies will <strong>hurl</strong> <strong>slimy</strong> games like kick the <strong>femur</strong> and <strong>skull</strong> toss.</p>
 </div>
 </div>
 </section>
 <section id="madlib-2-if-you-give-a-________" class="level3">
 <h3 class="anchored" data-anchor-id="madlib-2-if-you-give-a-________">Madlib 2: If you give a ________</h3>
-<div id="4b2454b9-ab3a-4cfd-9913-4b541a2184b5" class="cell" data-execution_count="16">
+<p><img src="020_20th_Post_files/figure-html/602cc439-d7dd-4d14-abd0-77d3af885172-1-63447569-4d8b-4f5b-940b-1b60f4d9d07e.jpg" class="img-fluid"></p>
+<div id="4b2454b9-ab3a-4cfd-9913-4b541a2184b5" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ifyougivea <span class="op">=</span> create_madlibs(<span class="st">"fun mad lib.jpg"</span>) </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ifyougivea </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ifyougivea <span class="op">=</span> create_madlibs(<span class="st">"fun mad lib.jpg"</span>) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(ifyougivea)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>"If you give a **platypus** a **taco**, he/she is going to ask for a **kazoo**.\n\nWhen you give him/her the **kazoo**, he/she will want to **yodel**.\n\nWhen he/she is finished, he/she will **dance**.\n\nThen he/she will **tango** and **hula** to the **refrigerator**.\n\nSince that doesn't work out, he/she will want to go to **Walmart**.\n\nOn the way, he/she will see a **garden gnome** and will want **roller skates**.\n\nThen you will have to take him/her to the **bowling alley**.  He/She will **juggle**.\n\nWhen he/she is done, he/she will ask you for some **pickled beets**. On the way home he/she will start a game of **charades**. When you finally get home, you'll have to **skydive**. Then he/she will want a **rubber chicken**. You'll have to find a **spatula**.\n\nand **bananas**. When he/she sees the **kazoo**, he/she will start **singing**.\n\nThen he/she will **cartwheeling** out of **watermelons**. Of course, when he/she is finished he/she will want to **snorkel**. So, he/she will ask for a **taco**. And chances are if you give him/her a **taco**, he/she is going to want a **kazoo**.\n"</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>If you give a <strong>platypus</strong> a <strong>pickle</strong>, he/she is going to ask for a ** pogo stick**.</p>
+<p>When you give him/her the <strong>pogo stick</strong>, he/she will want to <strong>bounce</strong>.</p>
+<p>When he/she is finished, he/she will <strong>giggle</strong>.</p>
+<p>Then he/she will <strong>sing</strong> and <strong>dance</strong> to the <strong>radio</strong>.</p>
+<p>Since that doesn’t work out, he/she will want to go to <strong>the moon</strong>.</p>
+<p>On the way, he/she will see a <strong>unicorn</strong> and will want <strong>glitter</strong>.</p>
+<p>Then you will have to take him/her to the <strong>craft store</strong>. He/She will <strong>bedazzle</strong> everything.</p>
+<p>When he/she is done, he/she will ask you for some <strong>chocolate cake</strong>. On the way home he/she will start a game of <strong>hide-and-seek</strong>. When you finally get home, you’ll have to <strong>search</strong> everywhere. Then he/she will want a <strong>nap</strong>. You’ll have to find a <strong>blanket</strong> and <strong>pillows</strong>. When he/she sees the <strong>pogo stick</strong>, he/she will start <strong>bouncing</strong> again.</p>
+<p>Then he/she will <strong>zoom</strong> out of <strong>control</strong>. Of course, when he/she is finished he/she will want to <strong>eat</strong>. So, he/she will ask for a <strong>pickle</strong>. And chances are if you give him/her a <strong>pickle</strong>, he/she is going to want a <strong>pogo stick</strong>.</p>
 </div>
 </div>
-<p><img src="020_20th_Post_files/figure-html/602cc439-d7dd-4d14-abd0-77d3af885172-1-63447569-4d8b-4f5b-940b-1b60f4d9d07e.jpg" class="img-fluid"></p>
 </section>
 <section id="madlib-3-a-story-about-space" class="level3">
 <h3 class="anchored" data-anchor-id="madlib-3-a-story-about-space">Madlib 3: A story about space</h3>
 <p><img src="020_20th_Post_files/figure-html/d16b30ea-0641-41f0-885b-a3525956dd80-1-474d7fcf-dcf5-46c9-af24-2a3eeb5d4bf3.png" class="img-fluid"></p>
-<div id="f7378707-2a88-45c3-bc7e-9876c5f49107" class="cell" data-execution_count="15">
+<div id="f7378707-2a88-45c3-bc7e-9876c5f49107" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>spacelibs <span class="op">=</span> create_madlibs(<span class="st">"madlibs.png"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>spacelibs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spacelibs <span class="op">=</span> create_madlibs(<span class="st">"madlibs.png"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(spacelibs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>'In 1981, the U.S. launched the first real Space **banana**. It was named Columbia and was piloted by two brave **ferrets**. They had practiced **singing** for two years and were expert **chefs**. Columbia took off from **Atlantis** using its powerful first-stage **watermelons** and soared off into the **stinky** blue **ocean**. At an altitude of **12** feet, it went into orbit around the **sun**. For people watching from Earth, it was a/an **slimy** sight to **dance**! Who could really **burp** that there were two **giraffes** in space? It was mind **blowing**. After **20** orbits, the shuttle landed **gracefully** at an air force **outhouse**. It was a/an **sparkly** day for the U.S. Space Program.\n'</code></pre>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>In 1981, the U.S. launched the first real Space <strong>Pickle</strong>. It was named Columbia and was piloted by two brave <strong>ferrets</strong>. They had practiced <strong>skiing</strong> for two years and were expert <strong>bananas</strong>. Columbia took off from <strong>Atlantis</strong> using its powerful first-stage <strong>watermelons</strong> and soared off into the <strong>purple</strong> blue <strong>sky</strong>. At an altitude of <strong>42</strong> feet, it went into orbit around the <strong>Moon</strong>. For people watching from Earth, it was a/an <strong>epic</strong> sight to <strong>explode</strong>! Who could really <strong>imagine</strong> that there were two <strong>hippopotamuses</strong> in space? It was mind <strong>blowing</strong>. After <strong>singing</strong> <strong>100</strong> orbits, the shuttle landed <strong>gracefully</strong> at an air force <strong>pancake</strong>. It was a/an <strong>amazing</strong> day for the U.S. Space Program.</p>
 </div>
 </div>
 <p><strong>Conclusion</strong></p>
